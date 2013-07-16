@@ -1,0 +1,24 @@
+.flyout-tool-tip {
+	margin: 0 1em 0 0;
+	border: solid #ccc 1px;
+	padding: .3em .5em;
+	background: #fff;
+	font-size: 86%;
+	z-index:2000;
+	display: none;
+}
+
+.flyoutmenu {
+	margin: 0 auto;
+	padding: 0;
+}
+.flyoutmenu ul li {
+	display: none;
+	list-style-type: none;
+	width: 40px;
+	height: 40px;
+	float: left;
+	position: absolute;
+	cursor: pointer;
+	background: url("img/circle.png") no-repeat scroll 0 0 transparent;
+}
