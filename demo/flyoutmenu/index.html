@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<!--script src="../common/jquery/jquery-1.9.1.min.js"></script-->
+<script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<!--script src="../common/jquery-ui-1.10.0.custom/js/jquery-ui-1.10.0.custom.min.js"></script-->
+<!--script src="//raw.github.com/imsky/cssFx/master/cssfx.min.js"></script-->
+<!--script src="../common/cssfx/cssfx.min.js"></script-->
+<link rel="stylesheet" href="flyoutmenu.css" class="cssfx">
+<script src="../../lib/jquery.flyoutmenu.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var menu = [
+		{ 'label' : '文字編集', 'img' : 'img/text.png' },
+		{ 'label' : '色変更', 'img' : 'img/color.png' },
+		{ 'label' : 'テクスチャー素材', 'img' : 'img/texture.png' },
+		{ 'label' : 'フレーム素材', 'img' : 'img/frame.png' },
+		{ 'label' : 'その他素材', 'img' : 'img/other.png' },
+		{ 'label' : 'ブラックジャック', 'img' : 'img/blackjack.png' }
+	];
+	$( '#demoDefault' ).flyoutmenu();
+	$( '#demoOption' ).flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		}
+	} );
+	$( '#demoOptionDraggable' ).flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		}
+	} ).draggable();
+	$( '#demoDraggableFlyout' )
+	.draggable( {
+		'start' : function() {
+			//$( '#demoDraggableFlyout' ).flyoutmenu( 'disable' );
+		},
+		'end' : function() {
+			//$( '#demoDraggableFlyout' ).flyoutmenu( 'enable' );
+		}
+	})
+	.flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		}
+	} )
+	;
+	$( '#demoDefaultOpera' ).flyoutmenu( {
+		'isForce' : { 'Opera' : true }
+	} );
+	$( '#demoOptionOpera' ).flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		},
+		'isForce' : { 'Opera' : true }
+	} );
+	$( '#demoOptionDraggableOpera' ).flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		},
+		'isForce' : { 'Opera' : true }
+	} ).draggable();
+	$( '#demoDraggableFlyoutOpera' )
+	.draggable( {
+		'start' : function() {
+			//$( '#demoDraggableFlyout' ).flyoutmenu( 'disable' );
+		},
+		'end' : function() {
+			//$( '#demoDraggableFlyout' ).flyoutmenu( 'enable' );
+		}
+	})
+	.flyoutmenu( {
+		'menu' : menu,
+		'timeout' : 1000 * 2,
+		'clicked' : function( button, index, element ) {
+			var x = element.pageX;
+			var y = element.pageY;
+			var pos = "(x:" + x + ", y:" + y + ")";
+			debug( $(this).attr('id'), index, button.data('label') + pos );
+		},
+		'isForce' : { 'Opera' : true }
+	} )
+	;
+	function debug( id, index, text ) {
+		var hash = String( Math.random() ).replace( '.', '' );
+		var thisId = "debug" + hash;
+		var target = $('#'+id).find('.debugArea');
+		var html = target.html();
+		var add = "<span id='" + thisId + "'>[" + index + "]" + text + "</div>";
+		html = add + "<br />" + html;
+		target.html( html );
+		$('#'+thisId).animate( { 'color' : '#F00' }, 100 ).animate( { 'color' : '#666' }, 800 );
+	}
+});
+</script>
+<style>
+* {
+	margin: 0 auto;
+	padding: 0;
+	font-family: 'Hiragino Maru Gothic Pro', 'ヒラギノ丸ゴ Pro', 'Meiryo', 'メイリオ', 'MS PGothic', 'MS Pゴシック', sans-serif;
+}
+.demo {
+	margin: 4px;
+	padding: 10px;
+	width: 350px;
+	height: 200px;
+	background: #CCC;
+	opacity: 0.8;
+	float: left;
+	border: 4px #999 dotted;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-khtml-border-radius: 10px;
+}
+.title {
+}
+.debugArea {
+	border: 1px #777 solid;
+	background: #EEE;
+	height: 150px;
+	margin-top: 8px;
+	overflow: auto;
+	overflow-x: hidden;
+	padding: 5px;
+	font-size: 10px;
+}
+#demoDefault .debugArea,
+#demoDefaultOpera .debugArea {
+	background: #999;
+}
+</style>
+</head>
+<body>
+<div class="demo" id="demoDefault">
+	<div class="title">
+		デフォルト(オプション無し)
+	</div>
+	<div class="debugArea">見た目の動作確認のみ。</div>
+</div>
+<div class="demo" id="demoOption">
+	<div class="title">
+		オプション
+	</div>
+	<div class="debugArea"></div>
+</div>
+<div class="demo" id="demoOptionDraggable">
+	<div class="title">
+		オプション＋draggable
+	</div>
+	<div class="debugArea"></div>
+</div>
+<div class="demo" id="demoDraggableFlyout">
+	<div class="title">
+		draggable＋flyout
+	</div>
+	<div class="debugArea"></div>
+</div>
+<div class="demo" id="demoDefaultOpera">
+	<div class="title">
+		デフォルト(オプション無し)＋Opera強制実行
+	</div>
+	<div class="debugArea">見た目の動作確認のみ。</div>
+</div>
+<div class="demo" id="demoOptionOpera">
+	<div class="title">
+		オプション＋Opera強制実行
+	</div>
+	<div class="debugArea"></div>
+</div>
+<div class="demo" id="demoOptionDraggableOpera">
+	<div class="title">
+		オプション＋draggable＋Opera強制実行
+	</div>
+	<div class="debugArea"></div>
+</div>
+<div class="demo" id="demoDraggableFlyoutOpera">
+	<div class="title">
+		draggable＋flyout＋Opera強制実行
+	</div>
+	<div class="debugArea"></div>
+</div>
+</body>
+</html>
