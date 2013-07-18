@@ -1,0 +1,81 @@
+ul {
+	margin-left: 0.5em;
+}
+ul li {
+	padding-left: 1em;
+	text-indent: -1em;
+	list-style-type: none;
+}
+ul li:before {
+	content: "・";
+}
+#main-content div.content {
+	position: absolute;
+	top: 0;
+	display: none;
+}
+ul#demo-menu li:before {
+	content: "";
+}
+ul#demo-menu li {
+	float: left;
+	list-style-type: none;
+	bottom: 0;
+	width: 80px;
+	text-align: center;
+	margin-top: 28px;
+	padding: 0;
+}
+ul#demo-menu li a {
+/*	display: block;*/
+	color: #333;
+	background: #bbb;
+	padding: 10px;
+	text-align: center;
+}
+ul#demo-menu li a.on,
+ul#demo-menu li a.hover {
+	background: #FAFAFA;
+	color: #666;
+}
+table {
+	margin-bottom: 20px;
+}
+table,
+table thead tr td {
+	border: none;
+}
+table tr th {
+	font-size: 10px;
+	padding: 4px;
+}
+table thead tr th {
+	background: #fff;
+	word-break: break-all;
+}
+table.ipad thead tr th {
+	padding: 6px;
+}
+table thead tr th:nth-child(odd) {
+	background: #eee;
+}
+table tr:nth-child(odd) {
+	/*background: #999;*/
+}
+table thead tr th.normal {
+	background: #fff;
+}
+table thead tr th.webclip {
+	background: #ccc;
+}
+table thead tr th.fullscreen {
+	background: #eee;
+}
+table tbody tr td {
+	width: 50px;
+	background: transparent;
+	font-size: 10px;
+	line-height: 10px;
+}
+span.notes {
+}

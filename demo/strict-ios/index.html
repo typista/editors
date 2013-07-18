@@ -1,81 +1,240 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja-JP" lang="ja-JP" manifest="cache.manifest">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>iOS Safariを判定し、Viewを設定するjQueryプラグイン</title>
-<style>
-body {
-	padding: 20px;
-	background: #eee;
-	font-size: 20px;
-	color: #3A3635;
-	text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
-	font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
-}
-dl {
-	margin: 20px;
-}
-dl dt,
-dl dd {
-	line-height: 22px;
-	float: left;
-}
-dl dt {
-	font-weight: bold;
-	clear: left;
-	width: 130px;
-}
-dl dd {
-	margin-bottom: 4px;
-	min-width: 400px;
-	max-width: 900px;
-}
-</style>
-</head>
-<body>
-<div id="result"></div>
-<!--
-<script src="jquery-1.10.2.min.js"></script>
--->
-<script src="../../external/jquery-2.0.3.min.js"></script>
-<script src="../../lib/jquery.strict-ios.js"></script>
-<script type="text/javascript">
-$(document).ready( function() {
-	var ios = $.strict.ios( {
-		appTitle : "ios-strict",
-		//isScrollableNone : false,
-		isScrollableNone : true,
-		//statusBarStyle : "black-translucent",
-		statusBarStyle : "white",
-		isReloadOrientation : false,
-		orientationchange : function() {
-			reportInfomation();
-		},
-		scroll: function() {
-			console.log( "scroll" );
-			reportInfomation();
-		}
-	} );
-	reportInfomation();
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen" />
 
-	function reportInfomation() {
-		var result = '<div class="warning">iOS Safariのみ実行可能です。</div>';
-		if ( typeof ios !== "undefined" ) {
-			var info = ios.get();
-			result = object2html( info );
-		}
-		$('#result').html(result);
-	}
-	function object2html( obj ) {
-		var html = "<dl>";
-		for ( var i in obj ) {
-			html += "<dt>" + i + "</dt>";
-			html += "<dd>" + obj[i] + "</dd>";
-		}
-		html += "</dl>";
-		return html;
-	}
-});
-</script>
-</body>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<title>The library of development for editors</title>
+	</head>
+
+	<body>
+		<header>
+			<div class="inner">
+				<h1>editors</h1>
+				<h2></h2>
+				<a href="https://github.com/typista/editors" class="button"><small>View project on</small>GitHub</a>
+				<ul id="demo-menu">
+					<li><a href="#about" class="on">about</a></li>
+					<li><a href="#usage">usage</a></li>
+				</ul>
+			</div>
+		</header>
+
+		<div id="content-wrapper">
+			<div class="inner clearfix">
+				<section id="main-content">
+					<div id="about" class="content">
+						<h2>jquery.strict-ios.js</h2>
+						<p>iOS Safariかどうかをなるべく厳密に判定し、アドレスバーの非表示等の基本となるViewを設定するjQueryプラグイン。</p>
+						<h3>プラグインの説明</h3>
+						<p>
+							iOS Safariに限定しても、１画面で利用可能なサイズは下の表のようなバリエーションが存在します。<br />
+							<table class="iphone">
+								<thead>
+									<tr>
+										<td rowspan="3"></td>
+										<th colspan="5">iPhone4[S]</th>
+										<th colspan="5">iPhone5</th>
+									</tr>
+									<tr>
+										<th colspan="2">Portrait</th>
+										<th colspan="3">Landscape</th>
+										<th colspan="2">Portrait</th>
+										<th colspan="3">Landscape</th>
+									</tr>
+									<tr>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="fullscreen">最大化</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="fullscreen">最大化</th>
+										<th class="webclip">WebClip</th>
+									</tr>
+								</thead>
+								<tfoot></tfoot>
+								<tbody>
+									<tr>
+										<th>横</th>
+										<td colspan="2">640</td>
+										<td colspan="3">960</td>
+										<td colspan="2">640</td>
+										<td colspan="3">1136</td>
+									</tr>
+									<tr>
+										<th>縦</th>
+										<td>832</td>
+										<td>920<br />(+40)</td>
+										<td>536</td>
+										<td>640</td>
+										<td>600<br />(+40)</td>
+										<td>1008</td>
+										<td>1096<br />(+40)</td>
+										<td>536</td>
+										<td>640</td>
+										<td>600<br />(+40)</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="ipad">
+								<thead>
+									<tr>
+										<td rowspan="3"></td>
+										<th colspan="4">iPad[mini]</th>
+										<th colspan="4">iPad(Retina)</th>
+									</tr>
+									<tr>
+										<th colspan="2">Portrait</th>
+										<th colspan="2">Landscape</th>
+										<th colspan="2">Portrait</th>
+										<th colspan="2">Landscape</th>
+									</tr>
+									<tr>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+										<th class="normal">通常</th>
+										<th class="webclip">WebClip</th>
+									</tr>
+								</thead>
+								<tfoot></tfoot>
+								<tbody>
+									<tr>
+										<th>横</th>
+										<td colspan="2">768</td>
+										<td colspan="2">1024</td>
+										<td colspan="2">1536</td>
+										<td colspan="2">2048</td>
+									</tr>
+									<tr>
+										<th>縦</th>
+										<td>928</td>
+										<td>1004<br />(+20)</td>
+										<td>672</td>
+										<td>748<br />(+20)</td>
+										<td>1856</td>
+										<td>2008<br />(+40)</td>
+										<td>1344</td>
+										<td>1496<br />(+40)</td>
+									</tr>
+								</tbody>
+							</table>
+							<ul class="caption">
+								<li>iPhone3G[S]は対象外としました。</li>
+								<li>iPod touchは第４世代、第５世代がそれぞれiPhone4[S]、iPhone5と同等扱いです。</li>
+								<li>WebClipモードの縦サイズはステータスバーを透過(black-translucent)した場合にカッコ内の数値増になります。ただし、ステータスバーが重なるエリアをデザインで利用するのは、なかなか難しいかと思われます。なお、通常は四隅がわずかに角丸であるのに対して、ステータスバーを透過(black-translucent)設定のWebClip起動に限っては四隅が直角になります。</li>
+							</ul>
+							そこで、jquery.strict-ios.jsでは緻密な画面レイアウトの実装を簡略化する仕組みを提供します。レスポンシブレイアウトやリキッドレイアウトといった可変性に富んだデザインはjQuery Mobile等の既存フレームワークを利用するほうが妥当です。<br />
+							このライブラリの処理は、iOS Safariかどうかをなるべく厳密に判定し、画面領域を有効に使えるように初期設定します。<br />
+							<br />
+							具体的には、次のような処理を行ないます。
+							<ul>
+								<li>iOSデバイス＆iOS Safari判定</li>
+								<li>デバイスの回転、スクロール、タッチイベントのリスナー登録<br /><span class="notes">※コールバックハンドラ登録で状態変化に応じた最新のデバイス情報を参照可能</span></li>
+								<li>initial-scale をデバイスに適した値に調整<br /><span class="notes">※iPhone4以降の縦(Portrait)表示の横幅を320pxではなく640pxに</span></li>
+								<li>jQueryの$(window).height() や $(window).width() では値を正確に取得できないため、jquery.strict-ios.js が返すオブジェクトに正しい値を保存</li>
+								<li>iPhoneで定番となっているアドレスバーを非表示にする処理</li>
+							</ul>
+							なお、iOS非標準のブラウザアプリは、画面サイズ自体や全画面表示の際のコントロール(戻るボタン等)の位置が様々である点やブラウザのユーザエージェントを偽装可能な点などの要因で対象外としています。
+						</p>
+						<h3>デモ</h3>
+						<p>
+							<dl>
+								<dt><a href="01.html">01</a></dt>
+								<dd>Mac用iOSシミュレータも対象</dd>
+								<dt><a href="02.html">02</a></dt>
+								<dd>同上＆WebClipモードでスターテスバー透過</dd>
+								<dt><a href="03.html">03</a></dt>
+								<dd>Mac用iOSシミュレータは対象外</dd>
+							</dl>
+						</p>
+					</div>
+					<div id="usage" class="content">
+						<h2>使い方</h2>
+						<p>
+							事前にjQuery(2.0.3で動作確認)を読み込んでください。<br />
+							なお、WebClipモードに対応するためには、<a href="cache.manifest">cache.manifest</a>ファイルも用意する必要があります。
+						</p>
+						<h2>Markup</h2>
+						<h3>HTML</h3>
+						<pre><code>
+&lt;script src="../../external/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
+&lt;script src="../../lib/jquery.strict-ios.js"&gt;&lt;/script&gt;
+						</code></pre>
+						<h3>CODE</h3>
+						<pre><code>
+    var ios = $.strict.ios( {
+        orientationchange : function(e, _ios) {
+            reportInfomation(_ios);
+        },
+        scroll: function(e, _ios) {
+            console.log( "scroll" );
+            reportInfomation(_ios);
+        }
+    } );
+    reportInfomation(ios);
+    function reportInfomation(ios) {
+        var result = '&lt;div class="warning"&gt;iOS Safari以外のアクセスのようです。&lt;/div&gt;';
+        if ( typeof ios !== "undefined" ) {
+            var info = ios.get();
+            result = object2html( info );
+        }
+        $('#result').html(result);
+    }
+    function object2html( obj ) {
+        var html = "&lt;dl&gt;";
+        for ( var i in obj ) {
+            html += "&lt;dt&gt;" + i + "&lt;/dt&gt;";
+            html += "&lt;dd&gt;" + obj[i] + "&lt;/dd&gt;";
+        }
+        html += "&lt;/dl&gt;";
+        return html;
+    }
+						</code></pre>
+					</div>
+				</section>
+
+				<aside id="sidebar">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-9711650413771317";
+					/* gh-pages-ractangle */
+					google_ad_slot = "3704888840";
+					google_ad_width = 200;
+					google_ad_height = 200;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+					<a href="https://github.com/typista/editors/zipball/master" class="button">
+						<small>Download</small>
+						.zip file
+					</a>
+					<a href="https://github.com/typista/editors/tarball/master" class="button">
+						<small>Download</small>
+						.tar.gz file
+					</a>
+
+					<p class="repo-owner"><a href="https://github.com/typista/editors"></a> is maintained by <a href="https://github.com/typista">typista</a>.</p>
+
+					<p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+				</aside>
+			</div>
+		</div>
+		<script src="../../lib/cdnLoader.js"></script>
+		<script src="../js/common.js"></script>
+	</body>
 </html>

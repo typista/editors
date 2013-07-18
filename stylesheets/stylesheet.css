@@ -52,7 +52,7 @@ body {
   font-size: 15px;
   line-height: 1.5; 
   background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-weight: 400;
   color: #666;
 }
@@ -67,7 +67,7 @@ a:hover {
 header {
   padding-top: 40px;
   padding-bottom: 40px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   background: #969696;
   border-bottom: solid 1px #777;
 }
@@ -102,6 +102,9 @@ header h2 {
 #main-content {
   width: 690px;
   float: left;
+}
+#main-content div.content {
+  width: inherit;
 }
 
 #main-content img {
@@ -201,7 +204,7 @@ hr {
 }
 
 table {
-  width: 100%;
+/*  width: 100%;	*/
   border: 1px solid #ebebeb;
 }
 
@@ -225,7 +228,7 @@ form {
 /* GENERAL ELEMENT TYPE STYLES */
 
 #main-content h1 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: 2.8em;
   letter-spacing: -1px;
   color: #474747;
@@ -239,21 +242,19 @@ form {
 }
 
 #main-content h2 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 8px;
   color: #474747;
 } 
 #main-content h2:before {
-  content: "//";
-  color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -1.5em;
 }
 
 #main-content h3 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: 18px;
   font-weight: bold;
   margin-top: 24px;
@@ -262,46 +263,38 @@ form {
 } 
  
 #main-content h3:before {
-  content: "///";
-  color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -2em;
 }
 
 #main-content h4 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: 15px;
   font-weight: bold;
   color: #474747;
 } 
 
 h4:before {
-  content: "////";
-  color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -2.8em;
 }
 
 #main-content h5 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: 14px;
   color: #474747;
 } 
 h5:before {
-  content: "/////";
-  color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -3.2em;
 }
 
 #main-content h6 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
+  font-family: 'メイリオ',Meiryo,'ヒラギノ丸ゴ Pro W3','Hiragino Maru Gothic Pro','ＭＳ Ｐゴシック','Osaka',sans-serif !important;
   font-size: .8em;
   color: #474747;
 } 
 h6:before {
-  content: "//////";
-  color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -3.7em;
 }
@@ -336,7 +329,7 @@ ol li {
 }
 
 dl dd {
-  font-style: italic;
+  /*font-style: italic;*/
   font-weight: 100;
 }
 
@@ -411,6 +404,7 @@ footer a:hover {
   }
   header {
     padding: 20px 0;
+	height: 148px;
   }
   header .inner {
     position: relative;
@@ -435,11 +429,8 @@ footer a:hover {
     text-align: center;
     font-size: 13px;
     line-height: 1;
-    background-color: #9ddcff;
-    color: #2879d0;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;                     
-    border-radius: 5px;    
+    background-color: #eee;
+    color: #555;
   }
   header a.button small {
     font-size: 13px;

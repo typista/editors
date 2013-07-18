@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja-JP" lang="ja-JP" manifest="cache.manifest">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>iOS Safariを判定し、Viewを設定するjQueryプラグイン</title>
+<style>
+body {
+	padding: 20px;
+	background: #eee;
+	font-size: 20px;
+	color: #3A3635;
+	text-shadow: -1px 1px 0 rgba(255, 255, 255, 1);
+	font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+}
+dl {
+	margin: 20px;
+}
+dl dt,
+dl dd {
+	line-height: 22px;
+	float: left;
+}
+dl dt {
+	font-weight: bold;
+	clear: left;
+	width: 130px;
+}
+dl dd {
+	margin-bottom: 4px;
+	min-width: 400px;
+	max-width: 900px;
+}
+</style>
+</head>
+<body>
+<div id="result"></div>
+<!--
+<script src="jquery-1.10.2.min.js"></script>
+-->
+<script src="../../external/jquery-2.0.3.min.js"></script>
+<script src="../../lib/jquery.strict-ios.js"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+	var ios = $.strict.ios( {
+		appTitle : "ios-strict",
+		isRejectSimulator : true,
+		//isScrollableNone : false,
+		isScrollableNone : true,
+		//statusBarStyle : "black-translucent",
+		isReloadOrientation : false,
+		orientationchange : function(e, _ios) {
+			reportInfomation(_ios);
+		},
+		scroll: function(e, _ios) {
+			console.log( "scroll" );
+			reportInfomation(_ios);
+		}
+	} );
+	reportInfomation(ios);
+
+	function reportInfomation(ios) {
+		var result = '<div class="warning">iOS Safari以外のアクセスのようです。</div>';
+		if ( typeof ios !== "undefined" ) {
+			var info = ios.get();
+			result = object2html( info );
+		}
+		$('#result').html(result);
+	}
+	function object2html( obj ) {
+		var html = "<dl>";
+		for ( var i in obj ) {
+			html += "<dt>" + i + "</dt>";
+			html += "<dd>" + obj[i] + "</dd>";
+		}
+		html += "</dl>";
+		return html;
+	}
+});
+</script>
+</body>
+</html>
