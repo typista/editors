@@ -72,7 +72,8 @@ header {
   border-bottom: solid 1px #777;
 }
 
-header h1 {
+header h1 a {
+  display: block;
   width: 310px;
   height: 70px;
   text-indent: -999999px;
