@@ -9,6 +9,9 @@ ul li {
 ul li:before {
 	content: "・";
 }
+ul.caption li {
+	font-size: 12px;
+}
 #main-content div.content {
 	position: absolute;
 	top: 0;
@@ -41,41 +44,67 @@ ul#demo-menu li a.hover {
 table {
 	margin-bottom: 20px;
 }
-table,
-table thead tr td {
+table.spec-matrix,
+table.spec-matrix thead tr td {
 	border: none;
 }
-table tr th {
+table.spec-matrix tr th {
 	font-size: 10px;
 	padding: 4px;
 }
-table thead tr th {
+table.spec-matrix thead tr th {
 	background: #fff;
 	word-break: break-all;
 }
-table.ipad thead tr th {
+table.spec-matrix.ipad thead tr th {
 	padding: 6px;
 }
-table thead tr th:nth-child(odd) {
+table.spec-matrix thead tr th:nth-child(odd) {
 	background: #eee;
 }
-table tr:nth-child(odd) {
+table.spec-matrix tr:nth-child(odd) {
 	/*background: #999;*/
 }
-table thead tr th.normal {
+table.spec-matrix thead tr th.normal {
 	background: #fff;
 }
-table thead tr th.webclip {
+table.spec-matrix thead tr th.webclip {
 	background: #ccc;
 }
-table thead tr th.fullscreen {
+table.spec-matrix thead tr th.fullscreen {
 	background: #eee;
 }
-table tbody tr td {
-	width: 50px;
+table.spec-matrix tbody tr td {
+	width: 52px;
 	background: transparent;
 	font-size: 10px;
 	line-height: 10px;
+}
+table.option-matrix,
+table.option-matrix tr,
+table.option-matrix tr th,
+table.option-matrix tr td {
+	border: none;
+}
+table.option-matrix thead tr th,
+table.option-matrix tbody tr td {
+	font-size: 12px;
+	min-width: 100px;
+	padding: 8px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+table.option-matrix tbody tr td:last-child {
+	text-align: left;
+}
+table.option-matrix thead tr {
+	background: #ccc;
+}
+table.option-matrix tbody tr:nth-child(odd) {
+	background: #fff;
+}
+table.option-matrix tbody tr:nth-child(even) {
+	background: #eee;
 }
 span.notes {
 }

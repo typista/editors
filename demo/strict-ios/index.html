@@ -22,6 +22,7 @@
 				<a href="https://github.com/typista/editors" class="button"><small>View project on</small>GitHub</a>
 				<ul id="demo-menu">
 					<li><a href="#about" class="on">about</a></li>
+					<li><a href="#demo">demo</a></li>
 					<li><a href="#usage">usage</a></li>
 				</ul>
 			</div>
@@ -36,7 +37,7 @@
 						<h3>プラグインの説明</h3>
 						<p>
 							iOS Safariに限定しても、１画面で利用可能なサイズは下の表のようなバリエーションが存在します。<br />
-							<table class="iphone">
+							<table class="spec-matrix iphone">
 								<thead>
 									<tr>
 										<td rowspan="3"></td>
@@ -86,7 +87,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<table class="ipad">
+							<table class="spec-matrix ipad">
 								<thead>
 									<tr>
 										<td rowspan="3"></td>
@@ -140,7 +141,7 @@
 							そこで、jquery.strict-ios.jsでは緻密な画面レイアウトの実装を簡略化する仕組みを提供します。レスポンシブレイアウトやリキッドレイアウトといった可変性に富んだデザインはjQuery Mobile等の既存フレームワークを利用するほうが妥当です。<br />
 							このライブラリの処理は、iOS Safariかどうかをなるべく厳密に判定し、画面領域を有効に使えるように初期設定します。<br />
 							<br />
-							具体的には、次のような処理を行ないます。
+							具体的には、次の処理を行ないます。
 							<ul>
 								<li>iOSデバイス＆iOS Safari判定</li>
 								<li>デバイスの回転、スクロール、タッチイベントのリスナー登録<br /><span class="notes">※コールバックハンドラ登録で状態変化に応じた最新のデバイス情報を参照可能</span></li>
@@ -150,8 +151,11 @@
 							</ul>
 							なお、iOS非標準のブラウザアプリは、画面サイズ自体や全画面表示の際のコントロール(戻るボタン等)の位置が様々である点やブラウザのユーザエージェントを偽装可能な点などの要因で対象外としています。
 						</p>
-						<h3>デモ</h3>
+					</div>
+					<div id="demo" class="content">
+						<h2>デモ</h2>
 						<p>
+							以下は、iOS Safariでアクセスした場合にのみ、このプラグインで取得可能な端末ステータスを表示するものです。
 							<dl>
 								<dt><a href="01.html">01</a></dt>
 								<dd>Mac用iOSシミュレータも対象</dd>
@@ -173,6 +177,7 @@
 						<pre><code>
 &lt;script src="../../external/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
 &lt;script src="../../lib/jquery.strict-ios.js"&gt;&lt;/script&gt;
+&lt;div id="result"&gt;&lt;div&gt;
 						</code></pre>
 						<h3>CODE</h3>
 						<pre><code>
@@ -181,7 +186,6 @@
             reportInfomation(_ios);
         },
         scroll: function(e, _ios) {
-            console.log( "scroll" );
             reportInfomation(_ios);
         }
     } );
@@ -204,6 +208,43 @@
         return html;
     }
 						</code></pre>
+						<h3>OPTION</h3>
+						<p>
+							<table class="option-matrix">
+								<thead>
+									<tr>
+										<th>名前</th><th>デフォルト値</th><th>型</th><th>説明</th>
+									</tr>
+								</thead>
+								<tfoot></tfoot>
+								<tbody>
+									<tr>
+										<td>isUseRatina</td><td>true</td><td>boolean</td><td>iPad Retinaモデルの場合に、画面解像度を実寸で使用する。非Retinaと同じ解像度で統一する場合は、falseを指定。</td>
+									</tr>
+									<tr>
+										<td>isRejectSimulator</td><td>false</td><td>boolean</td><td>iOSシミュレータ(Apple製)を対象外とする場合は、trueを指定。</td>
+									</tr>
+									<tr>
+										<td>isUserSelectNone</td><td>true</td><td>boolean</td><td>長押しタップによるテキストや画像の選択(-webkit-user-select)を可能とする場合は、falseを指定。</td>
+									</tr>
+									<tr>
+										<td>isScrollableNone</td><td>true</td><td>boolean</td><td>Webコンテンツエリアのフリック(touchMove)によるスクロールを許可する場合は、falseを指定。</td>
+									</tr>
+									<tr>
+										<td>isReloadOrientation</td><td>true</td><td>boolean</td><td>デバイスを回転させた場合に、コンテンツをリロードさせたくない場合は、falseを指定。</td>
+									</tr>
+									<tr>
+										<td>orientationchange</td><td>null</td><td>function</td><td>デバイス回転時のコールバックイベントハンドラ。</td>
+									</tr>
+									<tr>
+										<td>resize</td><td>null</td><td>function</td><td>iPhone Landscapeで最大化とその解除時のコールバックイベントハンドラ。</td>
+									</tr>
+									<tr>
+										<td>scroll</td><td>null</td><td>function</td><td>スクロール時のコールバックイベントハンドラ。</td>
+									</tr>
+								</tbody>
+							</table>
+						</p>
 					</div>
 				</section>
 

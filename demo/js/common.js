@@ -30,6 +30,7 @@ load(
 			switch ( hash ) {
 			case "#about":
 			case "#usage":
+			case "#demo":
 				$('.on').removeClass('on');
 				$('#demo-menu li a[href='+hash+']').addClass('on');
 				$('#main-content div.content').fadeOut("fast", function() {
