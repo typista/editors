@@ -1,9 +1,0 @@
-CACHE MANIFEST
-# 2013-07-16:v0.0.1
-
-NETWORK:
-*
-
-CACHE:
-../../external/jquery-2.0.3.min.js
-../../lib/jquery.ios.js
